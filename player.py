@@ -12,6 +12,11 @@ class Player:
         self.bet = 0
         self.folded = False
 
+    def reset(self):
+        self.hand = []
+        self.folded = False
+        self.bet = 0
+
     def reset_for_round(self):
         self.hand = []
         self.bet = 0
@@ -180,3 +185,8 @@ class RLBot(Player):
             return {"action": "check"}
         else:
             raise ValueError("Invalid RLBot action received")
+        
+    def reset(self):
+        super().reset()
+        self._action = None
+
